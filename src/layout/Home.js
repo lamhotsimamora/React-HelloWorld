@@ -13,9 +13,12 @@ export default function Home(){
     }, [])
   
     const fetchData = async () => {
+      var loading = document.getElementById('loading');
+      loading.setAttribute("class", "spinner-border text-primary");
       const response = await fetch('https://jsonplaceholder.typicode.com/todos');
       const data = await response.json();
       setTodo(data);
+      loading.setAttribute("class", "");
     }
   
     return <div>

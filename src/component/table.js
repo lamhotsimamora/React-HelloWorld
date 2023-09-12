@@ -4,7 +4,9 @@ export default function Navbar({ todos }) {
     console.log('delete ' + id)
   }
 
-  return <table className="table">
+  return  <div><span id="loading" className="" role="status">
+  </span>
+  <table className="table">
     <thead>
       <tr>
         <th scope="colSpan">ID</th>
@@ -13,7 +15,7 @@ export default function Navbar({ todos }) {
       </tr>
     </thead>
     <tbody>
-
+   
       {todos.map((todos, index) => (
         <tr key={todos.id}>
           <td>{todos.id}</td>
@@ -23,8 +25,6 @@ export default function Navbar({ todos }) {
           </td>
         </tr>
       ))}
-
-
     </tbody>
-  </table>
+  </table></div>
 }
