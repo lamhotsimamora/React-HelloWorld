@@ -1,29 +1,21 @@
-import Table from "./component/table";
-import Button from "./component/button";
-import Modal from "./component/modal";
-import { useEffect, useState } from "react";
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Profile from "./layout/Profile";
+import Home from "./layout/Home";
+import Contact from "./layout/Contact";
+import About from "./layout/About";
 
 function App() {
-
-  const [todos,setTodo] =useState([]);
-  
-  useEffect(()=>{
-    fetchData();
-  },[])
-
-  const fetchData= async()=>{
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos');
-    const data = await response.json();
-    setTodo(data);
-  }
-
-
   return (
     <div className="container">
-      <br></br>
-      <Button />
-      <Table todos={todos}/>
-      <Modal />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
